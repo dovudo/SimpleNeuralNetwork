@@ -1,6 +1,5 @@
 package com.genby;
 
-
 public class StepOne {
     final static int x = -2;
     final static int y = 3;
@@ -14,7 +13,7 @@ public class StepOne {
         float best_out_x = x;
         float y_try;
         float x_try;
-        float best_out = -333; //will fix
+        float best_out = -999; //will fix
 
         for (int i = 0; i < 100; i++) {
             x_try = (float) (x + tweak_amount * (Math.random() * 2 - 1));
@@ -30,21 +29,21 @@ public class StepOne {
     }
         //-->
         public static void NumericalGradient(){
-        float xph = h + x; //X and Step size
-        float yph = y + h; //Y and Step size
-        out = forwardMultiplyGate(x,y);
-        float xph_out = forwardMultiplyGate(xph,y);
-        float x_derivative = (xph_out - out) / h;
 
-        float yph_out = forwardMultiplyGate(yph,x);
-        float y_derivative = (yph_out - out) / h;
+            float xph = h + x; //X and Step size
+            float yph = y + h; //Y and Step size
+            out = forwardMultiplyGate(x,y);
+            float xph_out = forwardMultiplyGate(xph,y);
+            float x_derivative = (xph_out - out) / h;
 
-        float this_x = x + tweak_amount * x_derivative;
-        float this_y = y + tweak_amount * y_derivative;
+            float yph_out = forwardMultiplyGate(yph,x);
+            float y_derivative = (yph_out - out) / h;
 
-        float new_out = forwardMultiplyGate(this_x,this_y);
+            float this_x = x + tweak_amount * x_derivative;
+            float this_y = y + tweak_amount * y_derivative;
 
-       System.out.println("Numerical Gradient " + new_out);
+            float new_out = forwardMultiplyGate(this_x,this_y);
+            System.out.println("Numerical Gradient " + new_out);
     }
 
 
